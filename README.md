@@ -47,3 +47,11 @@ Success
 
 Commands
 --------
+
+set
+===
+set `KEY` `VALUE`
+
+Set the value of for a key.
+ * `KEY` - The key
+ * `VALUE` - The value
