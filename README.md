@@ -72,16 +72,25 @@ Delete the record by key.
  * `KEY` - The key
 
 ### show
-> show prefix `KEY_PREFIX`
+> show prefix `KEY_PREFIX` [`FORMAT`]
 
 Displays all values the keys that begin with the prefix.
  * `KEY_PREFIX` - The prefix to list of keys
+ * `FORMAT` - Data Display Format (Optional)
 
-> show range `START` `LIMIT`
+> show range `START` `LIMIT` [`FORMAT`]
 
 Displays all values, the keys of which are in the range between "START" and "LIMIT".
  * `START` - The key or key prefix indicating the beginning of the range
  * `LIMIT` - The key or key prefix indicating the end of the range
+ * `FORMAT` - Data Display Format (Optional)
+
+#### The list of formats available to display
+ * `raw` - Raw data without processing (default)
+ * `bson` - Attempts to convert the data to be displayed from `bson` to `json`
+ * `geohash` - Attempts to convert the data format of the `geohash` in the coordinates of the center (lat, lng)
+ * `int64` - Attempts to display the data as an integer 64-bit number
+ * `float64` - Attempts to display the data as a 64-bit number c with a floating point
  
 ### help
 > help
