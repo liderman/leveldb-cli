@@ -45,12 +45,31 @@ Success
 
 ## Commands
 
+### open
+> open `DATABASE_NAME`
+
+Opens database.
+If the database does not exist, it is created.
+You can use this method to create a new database.
+ * `DATABASE_NAME` - The database name or path
+
+### close
+> close
+
+It closes a previously opened database.
+
 ### set
 > set `KEY` `VALUE`
 
 Set the value of for a key.
  * `KEY` - The key
  * `VALUE` - The value
+
+### delete
+> delete `KEY`
+
+Delete the record by key.
+ * `KEY` - The key
 
 ### show
 > show prefix `KEY_PREFIX`
@@ -63,3 +82,13 @@ Displays all values the keys that begin with the prefix.
 Displays all values, the keys of which are in the range between "START" and "LIMIT".
  * `START` - The key or key prefix indicating the beginning of the range
  * `LIMIT` - The key or key prefix indicating the end of the range
+ 
+### help
+> help
+
+Displays short usage software
+
+### version
+> version
+
+Displays the current version of software and operating systems on which it runs
