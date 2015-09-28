@@ -1,18 +1,22 @@
-# leveldb-cli
-Command-line utility for working with levelDB
+leveldb-cli
+===========
+Command-line utility for working with levelDB.
+This utility is useful for debugging applications using the database LevelDB
 
-## Installation and build
+Installation and build
+----------------------
 
 ```
 go get github.com/liderman/leveldb-cli
 go install
 ```
 
-## Requirements
+Requirements
+------------
  * `go1.5` or newer.
 
-
-## Usage
+Usage
+-----
 
 ```
 # ./leveldb-cli
@@ -43,7 +47,8 @@ Success
 » exit
 ```
 
-## Commands
+Commands
+--------
 
 ### open
 > open `DATABASE_NAME`
@@ -101,3 +106,7 @@ Displays short usage software
 > version
 
 Displays the current version of software and operating systems on which it runs
+
+LICENSE
+-------
+Project distributes with standard MIT license
