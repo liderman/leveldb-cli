@@ -1,20 +1,18 @@
 # leveldb-cli
 Command-line utility for working with levelDB
 
-Installation and build
-----------------------
+## Installation and build
+
 ```
 go get github.com/liderman/leveldb-cli
 go install
 ```
 
-Requirements
-------------
+## Requirements
  * `go1.5` or newer.
 
 
-Usage
------
+## Usage
 
 ```
 # ./leveldb-cli
@@ -45,13 +43,23 @@ Success
 » exit
 ```
 
-Commands
---------
+## Commands
 
-set
-===
-set `KEY` `VALUE`
+### set
+> set `KEY` `VALUE`
 
 Set the value of for a key.
  * `KEY` - The key
  * `VALUE` - The value
+
+### show
+> show prefix `KEY_PREFIX`
+
+Displays all values the keys that begin with the prefix.
+ * `KEY_PREFIX` - The prefix to list of keys
+
+> show range `START` `LIMIT`
+
+Displays all values, the keys of which are in the range between "START" and "LIMIT".
+ * `START` - The key or key prefix indicating the beginning of the range
+ * `LIMIT` - The key or key prefix indicating the end of the range
