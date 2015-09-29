@@ -3,6 +3,9 @@ leveldb-cli
 Command-line utility for working with levelDB.
 This utility is useful for debugging applications using the database LevelDB
 
+
+![Demo GIF](https://raw.githubusercontent.com/liderman/leveldb-cli/master/docs/live-demo.gif)
+
 Installation and build
 ----------------------
 
