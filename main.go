@@ -121,11 +121,25 @@ func main() {
 		case args[0] == "put":
 		case args[0] == "set":
 			if len(args) != 3 {
-				fmt.Printf("Bad format. Please use '%s KEY VALUE'", args[0])
+				fmt.Printf("Bad format. Please use '%s KEY VALUE'\n", args[0])
 				break
 			}
 
 			fmt.Println(commands.Set(args[1], args[2]))
+			break
+		// Command: get
+		case args[0] == "get":
+			if (len(args) < 2 || len(args) > 3) {
+				fmt.Println("Bad format. Please use 'get KEY FORMAT'")
+				break
+			}
+
+			format :=  ""
+			if (len(args) == 3) {
+				format = args[2]
+			}
+
+			fmt.Println(commands.Get(args[1], format))
 			break
 		// Command: delete
 		case args[0] == "delete":

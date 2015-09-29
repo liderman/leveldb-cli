@@ -13,6 +13,7 @@ const ERR_UNABLE_TO_WRITE           = 1003
 const ERR_KEY_IS_EMPTY              = 1004
 const ERR_UNABLE_TO_DELETE          = 1005
 const ERR_COULD_NOT_CLOSE_DATABASE  = 1006
+const ERR_KEY_NOT_FOUND             = 1007
 
 // Error messages list
 var errorMessages = map[int]string{
@@ -22,6 +23,7 @@ var errorMessages = map[int]string{
 	ERR_KEY_IS_EMPTY:             "Key is exmpty",
 	ERR_UNABLE_TO_DELETE:         "Unable to delete [`%s`]",
 	ERR_COULD_NOT_CLOSE_DATABASE: "Could not close database [`%s`]",
+	ERR_KEY_NOT_FOUND:            "Key not found",
 }
 
 // The wrapper for outputting errors in the application
