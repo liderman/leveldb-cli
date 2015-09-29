@@ -1,4 +1,4 @@
-leveldb-cli
+LevelDB-CLI: a simple utility for debugging LevelDB
 ===========
 Command-line utility for working with levelDB.
 This utility is useful for debugging applications using the database LevelDB
