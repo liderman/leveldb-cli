@@ -14,6 +14,7 @@ import (
 	"math"
 )
 
+// Converts data to a string
 func ToString(format string, value []byte) string {
 	switch format {
 	case "bson":
@@ -31,6 +32,7 @@ func ToString(format string, value []byte) string {
 	return string(value)
 }
 
+// Converts data from bson type to a string
 func bsonToString(value []byte) string {
 	var dst interface{}
 	err := bson.Unmarshal(value, &dst)
@@ -41,17 +43,19 @@ func bsonToString(value []byte) string {
 	return fmt.Sprintf("%#v", dst)
 }
 
+// Converts data from geohash type to a string
 func geohashToString(value []byte) string {
 	position := geohash.Decode(string(value))
 
 	return fmt.Sprintf("lat: %f lng: %f", position.Center().Lat(), position.Center().Lng())
 }
 
-
+// Converts data from int64 type to a string
 func int64ToString(value []byte) string {
 	return fmt.Sprintf("%d", binary.BigEndian.Uint64(value))
 }
 
+// Converts data from float64 type to a string
 func float64ToString(value []byte) string {
 	return fmt.Sprintf("%f", math.Float64frombits(
 		binary.LittleEndian.Uint64(value),

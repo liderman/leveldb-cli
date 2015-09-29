@@ -14,6 +14,7 @@ const ERR_KEY_IS_EMPTY              = 1004
 const ERR_UNABLE_TO_DELETE          = 1005
 const ERR_COULD_NOT_CLOSE_DATABASE  = 1006
 
+// Error messages list
 var errorMessages = map[int]string{
 	ERR_DB_DOES_NOT_OPEN:         "Database does not open",
 	ERR_OPENING_DATABASE:         "Error opening database `%s`",

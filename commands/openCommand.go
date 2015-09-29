@@ -11,7 +11,10 @@ import (
 	"fmt"
 )
 
+// Database connection
 var dbh *leveldb.DB
+
+// DB connection flag
 var isConnected bool
 
 // The command to open the database.

@@ -11,7 +11,7 @@ import (
 	"github.com/syndtr/goleveldb/leveldb/iterator"
 	"fmt"
 	"text/tabwriter"
-	"github.com/leveldb-cli/cliutil"
+	"github.com/liderman/leveldb-cli/cliutil"
 	"bytes"
 	"bufio"
 )
@@ -21,7 +21,7 @@ import (
 // The list of possible values of format options: raw (default), geohash, bson, int64, float64
 //
 // Returns a string containing information about the result of the operation.
-func ShowByPrefix(prefix string, format string) string {
+func ShowByPrefix(prefix, format string) string {
 	if (!isConnected) {
 		return AppError(ERR_DB_DOES_NOT_OPEN)
 	}
@@ -48,6 +48,9 @@ func ShowByRange(start, limit, format string) string {
 	)
 }
 
+// Show by iterator
+//
+// Returns a string containing information about the result of the operation.
 func showByIterator(iter iterator.Iterator, format string) string {
 	if iter.Error() != nil {
 		return "Empty result!"
@@ -57,17 +60,15 @@ func showByIterator(iter iterator.Iterator, format string) string {
 	writer := bufio.NewWriter(&b)
 	w := new(tabwriter.Writer)
 
-	// Format in tab-separated columns with a tab stop of 8.
 	w.Init(writer, 0, 8, 0, '\t', 0)
 	fmt.Fprintln(w, "Key\t| Value")
 	for iter.Next() {
-		// Remember that the contents of the returned slice should not be modified, and
-		// only valid until the next call to Next.
 		key := iter.Key()
 		value := iter.Value()
 
 		fmt.Fprintf(w, "%s\t| %s\n", string(key), cliutil.ToString(format, value))
 	}
+
 	w.Flush()
 
 	iter.Release()

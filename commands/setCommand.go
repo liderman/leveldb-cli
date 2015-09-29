@@ -14,7 +14,7 @@ import (
 // It sets the value for the selected key.
 //
 // Returns a string containing information about the result of the operation.
-func Set(key string, value string) string {
+func Set(key, value string) string {
 	if (!isConnected) {
 		return AppError(ERR_DB_DOES_NOT_OPEN)
 	}
