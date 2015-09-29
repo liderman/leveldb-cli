@@ -79,6 +79,13 @@ Set the value of for a key.
 Delete the record by key.
  * `KEY` - The key
 
+### get
+> get `KEY` [`FORMAT`]
+
+Display value by key.
+ * `KEY` - The key
+ * `FORMAT` - Data Display Format (Optional)
+
 ### show
 > show prefix `KEY_PREFIX` [`FORMAT`]
 
