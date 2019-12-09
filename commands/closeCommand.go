@@ -15,14 +15,14 @@ import (
 //
 // Returns a string containing information about the result of the operation.
 func Close() string {
-	if (!isConnected) {
-		return AppError(ERR_DB_DOES_NOT_OPEN)
+	if !isConnected {
+		return AppError(ErrDbDoesNotOpen)
 	}
 
 	err := dbh.Close()
 	if err != nil {
 		return fmt.Sprintf(
-			AppError(ERR_COULD_NOT_CLOSE_DATABASE),
+			AppError(ErrCouldNotCloseDatabase),
 			err.Error(),
 		)
 	}

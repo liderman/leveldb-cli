@@ -7,13 +7,13 @@
 package commands
 
 import (
-	"github.com/syndtr/goleveldb/leveldb/util"
-	"github.com/syndtr/goleveldb/leveldb/iterator"
-	"fmt"
-	"text/tabwriter"
-	"github.com/liderman/leveldb-cli/cliutil"
-	"bytes"
 	"bufio"
+	"bytes"
+	"fmt"
+	"github.com/liderman/leveldb-cli/cliutil"
+	"github.com/syndtr/goleveldb/leveldb/iterator"
+	"github.com/syndtr/goleveldb/leveldb/util"
+	"text/tabwriter"
 )
 
 // It shows the contents of the database prefix filtering.
@@ -22,8 +22,8 @@ import (
 //
 // Returns a string containing information about the result of the operation.
 func ShowByPrefix(prefix, format string) string {
-	if (!isConnected) {
-		return AppError(ERR_DB_DOES_NOT_OPEN)
+	if !isConnected {
+		return AppError(ErrDbDoesNotOpen)
 	}
 
 	return showByIterator(
@@ -38,8 +38,8 @@ func ShowByPrefix(prefix, format string) string {
 //
 // Returns a string containing information about the result of the operation.
 func ShowByRange(start, limit, format string) string {
-	if (!isConnected) {
-		return AppError(ERR_DB_DOES_NOT_OPEN)
+	if !isConnected {
+		return AppError(ErrDbDoesNotOpen)
 	}
 
 	return showByIterator(
@@ -73,7 +73,7 @@ func showByIterator(iter iterator.Iterator, format string) string {
 
 	iter.Release()
 	err := iter.Error()
-	if (err != nil) {
+	if err != nil {
 		return "Error iterator!"
 	}
 

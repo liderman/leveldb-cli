@@ -5,32 +5,33 @@
 // This software provides a console interface to leveldb.
 
 package commands
+
 import "fmt"
 
-const ERR_DB_DOES_NOT_OPEN          = 1001
-const ERR_OPENING_DATABASE          = 1002
-const ERR_UNABLE_TO_WRITE           = 1003
-const ERR_KEY_IS_EMPTY              = 1004
-const ERR_UNABLE_TO_DELETE          = 1005
-const ERR_COULD_NOT_CLOSE_DATABASE  = 1006
-const ERR_KEY_NOT_FOUND             = 1007
+const ErrDbDoesNotOpen = 1001
+const ErrOpeningDatabase = 1002
+const ErrUnableToWrite = 1003
+const ErrKeyIsEmpty = 1004
+const ErrUnableToDelete = 1005
+const ErrCouldNotCloseDatabase = 1006
+const ErrKeyNotFound = 1007
 
 // Error messages list
 var errorMessages = map[int]string{
-	ERR_DB_DOES_NOT_OPEN:         "Database does not open",
-	ERR_OPENING_DATABASE:         "Error opening database `%s`",
-	ERR_UNABLE_TO_WRITE:          "Unable to write [`%s`]",
-	ERR_KEY_IS_EMPTY:             "Key is exmpty",
-	ERR_UNABLE_TO_DELETE:         "Unable to delete [`%s`]",
-	ERR_COULD_NOT_CLOSE_DATABASE: "Could not close database [`%s`]",
-	ERR_KEY_NOT_FOUND:            "Key not found",
+	ErrDbDoesNotOpen:         "Database does not open",
+	ErrOpeningDatabase:       "Error opening database `%s`",
+	ErrUnableToWrite:         "Unable to write [`%s`]",
+	ErrKeyIsEmpty:            "Key is exmpty",
+	ErrUnableToDelete:        "Unable to delete [`%s`]",
+	ErrCouldNotCloseDatabase: "Could not close database [`%s`]",
+	ErrKeyNotFound:           "Key not found",
 }
 
 // The wrapper for outputting errors in the application
 // Returns the text of the error
 func AppError(code int) string {
 	msg, ok := errorMessages[code]
-	if (ok) {
+	if ok {
 		return fmt.Sprintf("Error %d: %s!", code, msg)
 	}
 

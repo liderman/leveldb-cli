@@ -15,18 +15,18 @@ import (
 //
 // Returns a string containing information about the result of the operation.
 func Delete(key string) string {
-	if (!isConnected) {
-		return AppError(ERR_DB_DOES_NOT_OPEN)
+	if !isConnected {
+		return AppError(ErrDbDoesNotOpen)
 	}
 
-	if (key == "") {
-		return AppError(ERR_KEY_IS_EMPTY)
+	if key == "" {
+		return AppError(ErrKeyIsEmpty)
 	}
 
 	err := dbh.Delete([]byte(key), nil)
 	if err != nil {
 		return fmt.Sprintf(
-			AppError(ERR_UNABLE_TO_DELETE),
+			AppError(ErrUnableToDelete),
 			err.Error(),
 		)
 	}
