@@ -35,11 +35,14 @@ testdb» set key200 value200
 Success
 testdb» set key300 value300
 Success
+testdb» set "key \"123" value
+Success
 testdb» show prefix key
-Key	| Value
-key100	| value100
-key200	| value200
-key300	| value300
+Key	      | Value
+key100	  | value100
+key200	  | value200
+key300	  | value300
+key \"123 | value
 
 testdb» show range key2 key3
 Key	| Value

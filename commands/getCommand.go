@@ -15,17 +15,17 @@ import (
 //
 // Returns a string containing information about the result of the operation.
 func Get(key, format string) string {
-	if (!isConnected) {
-		return AppError(ERR_DB_DOES_NOT_OPEN)
+	if !isConnected {
+		return AppError(ErrDbDoesNotOpen)
 	}
 
-	if (key == "") {
-		return AppError(ERR_KEY_IS_EMPTY)
+	if key == "" {
+		return AppError(ErrKeyIsEmpty)
 	}
 
 	value, err := dbh.Get([]byte(key), nil)
 	if err != nil {
-		return AppError(ERR_KEY_NOT_FOUND)
+		return AppError(ErrKeyNotFound)
 	}
 
 	return cliutil.ToString(format, value)

@@ -11,18 +11,18 @@
 package main
 
 import (
+	"bitbucket.org/creachadair/shell"
 	"fmt"
 	"github.com/chzyer/readline"
-	"strconv"
-	"strings"
 	"github.com/liderman/leveldb-cli/commands"
 	"os"
 	"path"
 	"runtime"
+	"strconv"
 )
 
 // Software version number
-const VERSION = "0.1.8"
+const VERSION = "0.2.0"
 
 var completer = readline.NewPrefixCompleter(
 	readline.PcItem("show",
@@ -41,7 +41,7 @@ var completer = readline.NewPrefixCompleter(
 
 // Main function
 func main() {
-	l, err := readline.NewEx(&readline.Config {
+	l, err := readline.NewEx(&readline.Config{
 		Prompt:       "\033[31m»\033[0m ",
 		HistoryFile:  "/tmp/leveldb-cli.tmp",
 		AutoComplete: completer,
@@ -64,7 +64,7 @@ func main() {
 			break
 		}
 
-		args := strings.Split(line, " ")
+		args, _ := shell.Split(line)
 		switch {
 		// Command: version
 		case line == "version":
@@ -88,12 +88,12 @@ func main() {
 			switch args[1] {
 			// Sub-command: range
 			case "range":
-				if (len(args) < 4 || len(args) > 5) {
+				if len(args) < 4 || len(args) > 5 {
 					fmt.Println("Bad format. Please use 'show range START LIMIT [FORMAT]'")
 					break
 				}
 
-				format :=  ""
+				format := ""
 				if len(args) == 5 {
 					format = args[4]
 				}
@@ -102,13 +102,13 @@ func main() {
 				break
 			// Sub-command: prefix
 			case "prefix":
-				if (len(args) < 3 || len(args) > 4) {
+				if len(args) < 3 || len(args) > 4 {
 					fmt.Println("Bad format. Please use 'show prefix PREFIX [FORMAT]'")
 					break
 				}
 
-				format :=  ""
-				if (len(args) == 4) {
+				format := ""
+				if len(args) == 4 {
 					format = args[3]
 				}
 
@@ -129,13 +129,13 @@ func main() {
 			break
 		// Command: get
 		case args[0] == "get":
-			if (len(args) < 2 || len(args) > 3) {
+			if len(args) < 2 || len(args) > 3 {
 				fmt.Println("Bad format. Please use 'get KEY FORMAT'")
 				break
 			}
 
-			format :=  ""
-			if (len(args) == 3) {
+			format := ""
+			if len(args) == 3 {
 				format = args[2]
 			}
 
@@ -144,7 +144,7 @@ func main() {
 		// Command: delete
 		case args[0] == "delete":
 			if len(args) != 2 {
-				fmt.Printf("Bad format. Please use 'delete KEY'", args[0])
+				fmt.Print("Bad format. Please use 'delete KEY'")
 				break
 			}
 
@@ -153,7 +153,7 @@ func main() {
 		// Command: close
 		case args[0] == "close":
 			if len(args) != 1 {
-				fmt.Printf("Bad format. Please use 'close'", args[0])
+				fmt.Print("Bad format. Please use 'close'")
 				break
 			}
 
@@ -180,5 +180,5 @@ func main() {
 		}
 	}
 
-	exit:
+exit:
 }

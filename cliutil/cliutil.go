@@ -7,10 +7,10 @@
 package cliutil
 
 import (
-	"gopkg.in/mgo.v2/bson"
-	"github.com/TomiHiltunen/geohash-golang"
-	"fmt"
 	"encoding/binary"
+	"fmt"
+	"github.com/TomiHiltunen/geohash-golang"
+	"gopkg.in/mgo.v2/bson"
 	"math"
 )
 

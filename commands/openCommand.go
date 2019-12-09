@@ -7,8 +7,8 @@
 package commands
 
 import (
-	"github.com/syndtr/goleveldb/leveldb"
 	"fmt"
+	"github.com/syndtr/goleveldb/leveldb"
 )
 
 // Database connection
@@ -24,8 +24,8 @@ var isConnected bool
 func Open(file string) string {
 	var err error
 	dbh, err = leveldb.OpenFile(file, nil)
-	if (err != nil) {
-		return fmt.Sprintf(AppError(ERR_OPENING_DATABASE), file)
+	if err != nil {
+		return fmt.Sprintf(AppError(ErrOpeningDatabase), file)
 	}
 
 	isConnected = true

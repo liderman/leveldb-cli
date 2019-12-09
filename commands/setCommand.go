@@ -15,18 +15,18 @@ import (
 //
 // Returns a string containing information about the result of the operation.
 func Set(key, value string) string {
-	if (!isConnected) {
-		return AppError(ERR_DB_DOES_NOT_OPEN)
+	if !isConnected {
+		return AppError(ErrDbDoesNotOpen)
 	}
 
-	if (key == "") {
-		return AppError(ERR_KEY_IS_EMPTY)
+	if key == "" {
+		return AppError(ErrKeyIsEmpty)
 	}
 
 	err := dbh.Put([]byte(key), []byte(value), nil)
 	if err != nil {
 		return fmt.Sprintf(
-			AppError(ERR_UNABLE_TO_WRITE),
+			AppError(ErrUnableToWrite),
 			err.Error(),
 		)
 	}
