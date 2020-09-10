@@ -8,13 +8,14 @@ package commands
 
 import (
 	"github.com/liderman/leveldb-cli/cliutil"
+	"io/ioutil"
 )
 
 // The command get a value.
 // It gets the value for the selected key.
 //
 // Returns a string containing information about the result of the operation.
-func Get(key, format string) string {
+func Get(key, format, writeToFile string) string {
 	if !isConnected {
 		return AppError(ErrDbDoesNotOpen)
 	}
@@ -27,6 +28,14 @@ func Get(key, format string) string {
 	if err != nil {
 		return AppError(ErrKeyNotFound)
 	}
+	
+	if writeToFile == "true" {
+		fileErr := ioutil.WriteFile(key + ".jpg", value, 0644)
+		if fileErr != nil {
+			return AppError(FileWriteErr)
+		}
+	}
+	
 
 	return cliutil.ToString(format, value)
 }

@@ -15,6 +15,7 @@ const ErrKeyIsEmpty = 1004
 const ErrUnableToDelete = 1005
 const ErrCouldNotCloseDatabase = 1006
 const ErrKeyNotFound = 1007
+const FileWriteErr = 1008
 
 // Error messages list
 var errorMessages = map[int]string{
@@ -25,6 +26,7 @@ var errorMessages = map[int]string{
 	ErrUnableToDelete:        "Unable to delete [`%s`]",
 	ErrCouldNotCloseDatabase: "Could not close database [`%s`]",
 	ErrKeyNotFound:           "Key not found",
+	FileWriteErr:			  "Error writing file to disk",
 }
 
 // The wrapper for outputting errors in the application

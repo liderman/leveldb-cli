@@ -129,17 +129,21 @@ func main() {
 			break
 		// Command: get
 		case args[0] == "get":
-			if len(args) < 2 || len(args) > 3 {
-				fmt.Println("Bad format. Please use 'get KEY FORMAT'")
+			if len(args) < 2 || len(args) > 4 {
+				fmt.Println("Bad format. Please use 'get KEY FORMAT WRITETOFILE'")
 				break
 			}
 
 			format := ""
-			if len(args) == 3 {
+			writeToFile := "false";
+			if len(args) >= 3 {
 				format = args[2]
 			}
+			if len(args) == 4 {
+				writeToFile = args[3]
+			}
 
-			fmt.Println(commands.Get(args[1], format))
+			fmt.Println(commands.Get(args[1], format, writeToFile))
 			break
 		// Command: delete
 		case args[0] == "delete":
