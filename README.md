@@ -83,11 +83,12 @@ Delete the record by key.
  * `KEY` - The key
 
 ### get
-> get `KEY` [`FORMAT`]
+> get `KEY` [`FORMAT`] ['WRITETOFILE']
 
 Display value by key.
  * `KEY` - The key
  * `FORMAT` - Data Display Format (Optional)
+ * `WRITETOFILE` - Write value to .jpg file (Optional)
 
 ### show
 > show prefix `KEY_PREFIX` [`FORMAT`]
