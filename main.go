@@ -131,13 +131,13 @@ func main() {
 			break
 		// Command: get
 		case args[0] == "get":
-			if len(args) < 2 || len(args) > 4 {
+			if len(args) < 2 || len(args) > 3 {
 				fmt.Println("Bad format. Please use 'get KEY FORMAT'")
 				break
 			}
 
 			format := ""
-			if len(args) >= 3 {
+			if len(args) == 3 {
 				format = args[2]
 			}
 
