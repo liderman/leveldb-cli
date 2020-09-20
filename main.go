@@ -23,7 +23,7 @@ import (
 )
 
 // Software version number
-const VERSION = "0.2.0"
+const VERSION = "0.3.0"
 
 var completer = readline.NewPrefixCompleter(
 	readline.PcItem("show",
@@ -74,7 +74,7 @@ func main() {
 			break
 		// Command: help
 		case line == "help":
-			fmt.Println("Enter one of the commands to get help: show, set, get, open, close, put, delete, version")
+			fmt.Println("Enter one of the commands to get help: show, set, get, export, open, close, put, delete, version")
 			break
 		// Command: quit and exit
 		case line == "quit":

@@ -26,7 +26,7 @@ var errorMessages = map[int]string{
 	ErrUnableToDelete:        "Unable to delete [`%s`]",
 	ErrCouldNotCloseDatabase: "Could not close database [`%s`]",
 	ErrKeyNotFound:           "Key not found",
-	FileWriteErr:			  "Error writing file to disk",
+	FileWriteErr:             "Error writing file to disk",
 }
 
 // The wrapper for outputting errors in the application
