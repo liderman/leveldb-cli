@@ -1,4 +1,3 @@
-// Copyright 2015 Osipov Konstantin <k.osipov.msk@gmail.com>. All rights reserved.
 // license that can be found in the LICENSE file.
 
 // This file is part of the application source code leveldb-cli
@@ -7,14 +6,14 @@
 package commands
 
 import (
-	"github.com/liderman/leveldb-cli/cliutil"
+	"io/ioutil"
 )
 
-// The command get a value.
-// It gets the value for the selected key.
+// The command exports a value for the selected key
+// to .jpeg file with specified filename.
 //
 // Returns a string containing information about the result of the operation.
-func Get(key, format string) string {
+func Export(key, fileName string) string {
 	if !isConnected {
 		return AppError(ErrDbDoesNotOpen)
 	}
@@ -28,5 +27,10 @@ func Get(key, format string) string {
 		return AppError(ErrKeyNotFound)
 	}
 
-	return cliutil.ToString(format, value)
+	fileErr := ioutil.WriteFile(fileName+".jpg", value, 0644)
+	if fileErr != nil {
+		return AppError(FileWriteErr)
+	}
+
+	return "Success"
 }

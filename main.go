@@ -11,14 +11,15 @@
 package main
 
 import (
-	"bitbucket.org/creachadair/shell"
 	"fmt"
-	"github.com/chzyer/readline"
-	"github.com/liderman/leveldb-cli/commands"
 	"os"
 	"path"
 	"runtime"
 	"strconv"
+
+	"bitbucket.org/creachadair/shell"
+	"github.com/chzyer/readline"
+	"github.com/liderman/leveldb-cli/commands"
 )
 
 // Software version number
@@ -33,6 +34,7 @@ var completer = readline.NewPrefixCompleter(
 	readline.PcItem("quit"),
 	readline.PcItem("help"),
 	readline.PcItem("get"),
+	readline.PcItem("export"),
 	readline.PcItem("put"),
 	readline.PcItem("set"),
 	readline.PcItem("delete"),
@@ -130,20 +132,25 @@ func main() {
 		// Command: get
 		case args[0] == "get":
 			if len(args) < 2 || len(args) > 4 {
-				fmt.Println("Bad format. Please use 'get KEY FORMAT WRITETOFILE'")
+				fmt.Println("Bad format. Please use 'get KEY FORMAT'")
 				break
 			}
 
 			format := ""
-			writeToFile := "false";
 			if len(args) >= 3 {
 				format = args[2]
 			}
-			if len(args) == 4 {
-				writeToFile = args[3]
+
+			fmt.Println(commands.Get(args[1], format))
+			break
+		//Command export
+		case args[0] == "export":
+			if len(args) < 3 || len(args) > 3 {
+				fmt.Println("Bad format. Please use 'export KEY FILENAME'")
+				break
 			}
 
-			fmt.Println(commands.Get(args[1], format, writeToFile))
+			fmt.Println(commands.Export(args[1], args[2]))
 			break
 		// Command: delete
 		case args[0] == "delete":
