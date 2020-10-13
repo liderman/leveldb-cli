@@ -92,7 +92,7 @@ Display value by key.
 ### export
 > export `KEY` `FILENAME`
 
-Write value by key to .jpg file with specified filename.
+Write value by key to file with specified filename or path.
  * `KEY` - The key
  * `FILENAME` - File name of the output file
 

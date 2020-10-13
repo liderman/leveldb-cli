@@ -10,7 +10,7 @@ import (
 )
 
 // The command exports a value for the selected key
-// to .jpeg file with specified filename.
+// to file with specified filename.
 //
 // Returns a string containing information about the result of the operation.
 func Export(key, fileName string) string {
@@ -27,7 +27,7 @@ func Export(key, fileName string) string {
 		return AppError(ErrKeyNotFound)
 	}
 
-	fileErr := ioutil.WriteFile(fileName+".jpg", value, 0644)
+	fileErr := ioutil.WriteFile(fileName, value, 0644)
 	if fileErr != nil {
 		return AppError(FileWriteErr)
 	}
