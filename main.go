@@ -145,7 +145,7 @@ func main() {
 			break
 		//Command export
 		case args[0] == "export":
-			if len(args) < 3 || len(args) > 3 {
+			if len(args) != 3 {
 				fmt.Println("Bad format. Please use 'export KEY FILENAME'")
 				break
 			}
