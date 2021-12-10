@@ -80,6 +80,8 @@ func main() {
 		case line == "quit":
 		case line == "exit":
 			goto exit
+		case len(args) == 0:
+			break
 		// Command: show
 		case args[0] == "show":
 			if len(args) == 1 {
@@ -116,6 +118,8 @@ func main() {
 
 				fmt.Println(commands.ShowByPrefix(args[2], format))
 				break
+			default:
+				fmt.Println("Bad format. Please use 'show prefix|range'")
 			}
 
 			break
