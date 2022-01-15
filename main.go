@@ -85,7 +85,7 @@ func main() {
 		// Command: show
 		case args[0] == "show":
 			if len(args) == 1 {
-				fmt.Println("Bad format. Please use 'show prefix|range'")
+				fmt.Println("Bad format. Please use 'show prefix|range|limit'")
 				break
 			}
 
@@ -118,8 +118,28 @@ func main() {
 
 				fmt.Println(commands.ShowByPrefix(args[2], format))
 				break
+			// Sub-command: limit
+			case "limit":
+				if len(args) < 3 || len(args) > 4 {
+					fmt.Println("Bad format. Please use 'show limit LIMIT [FORMAT]'")
+					break
+				}
+
+				limit, err := strconv.Atoi(args[2])
+				if err != nil {
+					fmt.Println("Bad LIMIT value. LIMIT must be a number")
+					break
+				}
+
+				format := ""
+				if len(args) == 4 {
+					format = args[3]
+				}
+
+				fmt.Println(commands.ShowLimit(limit, format))
+				break
 			default:
-				fmt.Println("Bad format. Please use 'show prefix|range'")
+				fmt.Println("Bad format. Please use 'show prefix|range|limit'")
 			}
 
 			break

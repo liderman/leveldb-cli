@@ -110,6 +110,12 @@ Displays all values, the keys of which are in the range between "START" and "LIM
  * `LIMIT` - The key or key prefix indicating the end of the range
  * `FORMAT` - Data Display Format (Optional)
 
+> show limit `LIMIT` [`FORMAT`]
+
+Displays all content of the database limited by "LIMIT".
+ * `LIMIT` - Limiting the number of records displayed
+ * `FORMAT` - Data Display Format (Optional)
+
 #### The list of formats available to display
  * `raw` - Raw data without processing (default)
  * `bson` - Attempts to convert the data to be displayed from `bson` to `json`
