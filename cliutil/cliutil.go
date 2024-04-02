@@ -8,10 +8,12 @@ package cliutil
 
 import (
 	"encoding/binary"
+	"encoding/hex"
 	"fmt"
+	"math"
+
 	"github.com/TomiHiltunen/geohash-golang"
 	"gopkg.in/mgo.v2/bson"
-	"math"
 )
 
 // Converts data to a string
@@ -26,6 +28,8 @@ func ToString(format string, value []byte) string {
 	case "float64":
 		return float64ToString(value)
 	case "raw":
+	case "hex":
+		return hex.EncodeToString(value)
 	default:
 	}
 
