@@ -138,6 +138,13 @@ func main() {
 
 				fmt.Println(commands.ShowLimit(limit, format))
 				break
+			case "count":
+				if len(args) < 2 || len(args) > 3 {
+					fmt.Println("Bad format. Please use'show count [FORMAT]'")
+					break
+				}
+				fmt.Println(commands.ShowCount())
+				break
 			default:
 				fmt.Println("Bad format. Please use 'show prefix|range|limit'")
 			}

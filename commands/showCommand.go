@@ -10,10 +10,11 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
+	"text/tabwriter"
+
 	"github.com/liderman/leveldb-cli/cliutil"
 	"github.com/syndtr/goleveldb/leveldb/iterator"
 	"github.com/syndtr/goleveldb/leveldb/util"
-	"text/tabwriter"
 )
 
 // It shows the contents of the database prefix filtering.
@@ -67,6 +68,29 @@ func ShowLimit(limit int, format string) string {
 	)
 }
 
+func ShowCount() string {
+	if !isConnected {
+		return AppError(ErrDbDoesNotOpen)
+	}
+
+	return showCuntByIterator(dbh.NewIterator(nil, nil))
+}
+
+func showCuntByIterator(iter iterator.Iterator) string {
+	//统计总数
+	var count int64
+	for iter.Next() {
+		count++
+	}
+
+	iter.Release()
+	err := iter.Error()
+	if err != nil {
+		return "Error iterator!"
+	}
+	return fmt.Sprintf("%d", count)
+}
+
 // Show by iterator
 //
 // Returns a string containing information about the result of the operation.
@@ -103,6 +127,8 @@ func showByIterator(iter iterator.Iterator, format string, limit int) string {
 		return "Error iterator!"
 	}
 
+	//writer中写入数量
+	fmt.Fprintf(w, "=== Total: %d ===\n", count)
 	writer.Flush()
 	return string(b.Bytes())
 }
